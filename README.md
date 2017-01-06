@@ -1,1 +1,1 @@
-CI/CD with containers deployed to ECS
+Continuous Delivery with Amazon EC2 Container Service

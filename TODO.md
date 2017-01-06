@@ -1,0 +1,6 @@
+- Publish Jenkins pipelines in the DSL format
+- Demonstrate deployment strategies in Amazon ECS
+- Illustrate with multiple Docker containers
+- Upgrade to use newer features supported by Amazon ECS including
+  - support for ALB
+  - [to be added] 
