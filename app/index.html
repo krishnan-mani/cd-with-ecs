@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="books">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Docker meetup in Mumbai, September 2016</title>
+
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+    <div><p class="lead">Books: CI/CD for containers with ECS</p></div>
+    <div class="row row-content" ng-controller="booksController as controller">
+
+        <div class="col-xs-12">
+            <ul class="media-list">
+                <li class="media" ng-repeat="book in controller.booksList">
+                    <div class="media-body">
+                        <h2 class="media-heading">{{book.title}}
+                            <span class="label label-info">{{book.genre}}</span>
+                            <span class="badge">{{book.price | currency}}</span></h2>
+                        <p>{{book.description}}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/angular.min.js"></script>
+
+<script>
+    var app = angular.module("books", []);
+    app.controller("booksController", function () {
+        var booksList = [
+            {
+                title: 'The Man with No Boots',
+                genre: 'Fiction',
+                description: 'A novel with no meaning',
+                price: '2.25'
+            },
+            {
+                title: 'The Governor Sold His Ambassador',
+                genre: 'Non-fiction',
+                description: 'The exit of Raghuram Rajan',
+                price: '6.80'
+            },
+            {
+                title: 'Alice in Wonderland',
+                genre: 'Absurdities',
+                description: 'The adventures of a fanciful girl',
+                price: '7.10'
+            },
+            {
+                title: 'Neutrino Milkshakes',
+                genre: 'Science Fiction',
+                description: 'Cuisine on Asteroids',
+                price: '11.95'
+            }
+        ];
+        this.booksList = booksList;
+    });
+</script>
+</body>
+</html>
