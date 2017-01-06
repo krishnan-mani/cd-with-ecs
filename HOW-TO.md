@@ -41,6 +41,16 @@ Build steps
   - CHANGE_SET_NAME
   - AWS_REGION
 
+- Add build meta-data to the app
+
+```bash
+
+BUILT_AT_TIME=`date`
+echo "{\"commit\":\"${GIT_COMMIT:0:7}\",\"builtAt\":\"${BUILT_AT_TIME}\",\"buildTag\":\"${BUILD_TAG}\"}">${WORKSPACE}/version.json
+echo "<h1>${GIT_COMMIT:0:7}</h1>">${WORKSPACE}/version.html
+
+```
+
 - Publish to ECR
 
 ```bash
