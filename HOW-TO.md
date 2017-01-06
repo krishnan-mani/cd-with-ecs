@@ -2,7 +2,7 @@ About
 ===
 
 - The project consists of a simple web application (HTML + JavaScript) that is deployed to a Docker container (running httpd)
-- CloudFormation is used to provision clusters in ECS, and publish the application URL to DNS (in Route 53)
+- CloudFormation is used to provision clusters in ECS, and publish the application location to DNS (in Route 53)
   - Release pipeline are used in Jenkins to implement Continuous Delivery (CD)
   - The stack is re-created for lower environments
   - In the higher environments, a change-set is created against the existing stack
@@ -23,6 +23,10 @@ $ docker run -d -P my-bookstore:latest
   - The release pipeline consists of an upstream build job and downstream provisioning job 
   - The build job pulls the application artifacts from version control, builds a Docker image, and pushes the image to a repository in ECR, and triggers the downstream provisioning job
   - The provisioning job uses the templates provided to create or update a stack in CloudFormation
+  - Independent release pipelines are used for each environment. 
+  - We use a (branching workflow)[https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows] with Git, and each pipeline polls a particular branch for changes
+  - The development environment is deployed off the "develop" branch, and the UAT environment is deployed off "master" branch
+  - We use a convention for the Docker image tags, and the change-set that uses the commit key, for improved traceability
 
     
 Build steps
@@ -57,8 +61,7 @@ $ aws --region ${AWS_REGION} cloudformation create-stack \
     ParameterKey=ImageRepository,ParameterValue=${IMAGE_REPOSITORY} \
     ParameterKey=ImageTag,ParameterValue=${GIT_COMMIT:0:7} \
     --capabilities CAPABILITY_IAM \
-    --output text
-  
+    --output text  
 $ aws --region ${AWS_REGION} cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
 
 ```
@@ -78,5 +81,6 @@ $ aws --region ${AWS_REGION} cloudformation create-change-set \
     ParameterKey=ImageTag,ParameterValue=${IMAGE_TAG} \
   --capabilities CAPABILITY_IAM \
   --output text
+$ aws --region ${AWS_REGION} cloudformation wait change-set-create-complete --stack-name ${STACK_NAME}
   
 ```
