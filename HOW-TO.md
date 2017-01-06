@@ -26,7 +26,7 @@ $ docker run -d -P my-bookstore:latest
   - Independent release pipelines are used for each environment. 
   - We use a [branching workflow](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows) with Git, and each pipeline polls a particular branch for changes
   - The development environment is deployed off the "develop" branch, and the UAT environment is deployed off "master" branch
-  - We use a convention for the Docker image tags, and the change-set that uses the commit key, for improved traceability
+  - We use a convention for the Docker image tags and the change-set name based on the commit key in Git, for improved traceability
 
     
 Build steps
