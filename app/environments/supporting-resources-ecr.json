@@ -1,0 +1,10 @@
+{
+  "Resources": {
+    "appRepository": {
+      "Type": "AWS::ECR::Repository",
+      "Properties": {
+        "RepositoryName": "my-bookstore"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue": "[REPLACE-ME-PUBLIC-KEY-NAME]"
+  },
+  {
+    "ParameterKey": "SubnetIdList",
+    "ParameterValue": "\"[REPLACE-ME-SUBNET-IDS-FOR-LOAD-BALANCER]\""
+  },
+  {
+    "ParameterKey": "WebsiteDNSName",
+    "ParameterValue": "[REPLACE-ME-EXAMPLE-vdemo.dev.devopsanand.com]"
+  },
+  {
+    "ParameterKey": "ServiceDomainHostedZoneId",
+    "ParameterValue": "[REPLACE-ME-ROUTE-53-HZID-FOR-dev-DOMAIN]"
+  }
+]

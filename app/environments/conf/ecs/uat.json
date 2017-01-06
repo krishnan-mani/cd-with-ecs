@@ -1,0 +1,22 @@
+[
+  {
+    "ParameterKey": "DesiredCapacity",
+    "ParameterValue": "3"
+  },
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue": "[REPLACE-ME-PUBLIC-KEY-NAME]"
+  },
+  {
+    "ParameterKey": "SubnetIdList",
+    "ParameterValue": "\"[REPLACE-ME-SUBNET-IDS-FOR-LOAD-BALANCER]\""
+  },
+  {
+    "ParameterKey": "WebsiteDNSName",
+    "ParameterValue": "[REPLACE-ME-EXAMPLE-vdemo.uat.devopsanand.com]"
+  },
+  {
+    "ParameterKey": "ServiceDomainHostedZoneId",
+    "ParameterValue": "[REPLACE-ME-ROUTE-53-HZID-FOR-uat-DOMAIN]"
+  }
+]
